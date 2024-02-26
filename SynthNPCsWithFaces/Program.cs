@@ -9,6 +9,7 @@ namespace SynthNPCsWithFaces
 {
     class Program
     {
+        [Obsolete]
         public static async Task<int> Main(string[] args)
         {
             return await SynthesisPipeline.Instance.AddPatch<ISkyrimMod, ISkyrimModGetter>(RunPatch).Run(args, new RunPreferences()
@@ -38,7 +39,8 @@ namespace SynthNPCsWithFaces
                 .Where(npc =>
                     (npc.Template.IsNull ||
                      !npc.Configuration.TemplateFlags.HasFlag(NpcConfiguration.TemplateFlag.Traits))
-                    && races.ContainsKey(npc.Race.FormKey))
+                    && races.ContainsKey(npc.Race.FormKey)
+                    && !npc.EditorID.Equals("AstridEnd"))
                 .Select(npc => npc.DeepCopy())
                 .ToArray();
             

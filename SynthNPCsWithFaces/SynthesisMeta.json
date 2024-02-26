@@ -4,5 +4,6 @@
   "OneLineDescription": "Helper patcher for TPF",
   "LongDescription": "Creates a new plugin with all the modified NPC records, useful for building NPC merges",
   "PreferredAutoVersioning": "Default",
-  "RequiredMods": []
+  "RequiredMods": [],
+  "TargetedReleases": []
 }

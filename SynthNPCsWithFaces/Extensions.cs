@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Mutagen.Bethesda;
+using Mutagen.Bethesda.Plugins.Records;
 
 namespace SynthNPCsWithFaces
 {
