@@ -30,6 +30,7 @@ namespace SynthNPCsWithFaces
                 .WinningOverrides()
                 .Where(race => race.Flags.HasFlag(Race.Flag.FaceGenHead))
                 .Where(race => !race.Flags.HasFlag(Race.Flag.Child))
+                .Where(race => race.EditorID != null && !race.EditorID.Equals("SnowElfRace"))
                 .ToDictionary(race => race.FormKey);
             
             Console.WriteLine($"Found {races.Count} races");
@@ -40,6 +41,7 @@ namespace SynthNPCsWithFaces
                     (npc.Template.IsNull ||
                      !npc.Configuration.TemplateFlags.HasFlag(NpcConfiguration.TemplateFlag.Traits))
                     && races.ContainsKey(npc.Race.FormKey)
+                    && npc.EditorID != null
                     && !npc.EditorID.Equals("AstridEnd"))
                 .Select(npc => npc.DeepCopy())
                 .ToArray();
